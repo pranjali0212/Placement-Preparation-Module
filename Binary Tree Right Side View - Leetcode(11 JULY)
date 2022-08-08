@@ -1,0 +1,19 @@
+class Solution {
+public:
+    void right(vector<int> &v,TreeNode* root,int level){
+        if(!root){
+            return;
+        }
+        if(v.size()==level){
+            v.push_back(root->val);
+        }
+        right(v,root->right,level+1);
+        right(v,root->left,level+1);
+        return;
+    }
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        right(ans,root,0);
+        return ans;
+    }
+};
